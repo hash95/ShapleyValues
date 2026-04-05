@@ -5,7 +5,7 @@ library(shiny)
 make_value_fn <- function(values, names) {
   function(indices) {
     if (length(indices) == 0) return(0)
-    key <- paste(sort(names[indices]), collapse = "+")
+    key <- coalition_key(indices, names)
     val <- values[[key]]
     if (is.null(val)) stop(sprintf("No value defined for coalition: '%s'", key))
     val
